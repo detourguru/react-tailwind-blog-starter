@@ -183,3 +183,20 @@ export default Detail;
 ```
 
 # 실습: 블로그 만들기
+
+## debounce
+
+- 사용자가 입력을 특정 시간 이상 멈출 때까지 기다리도록 해 요청 수를 줄이는 방식
+
+```
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("거색중");
+
+      fetchPosts(`/posts?title_like=${keyword}`);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [keyword]);
+```
