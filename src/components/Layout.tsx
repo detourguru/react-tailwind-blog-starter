@@ -27,8 +27,8 @@ const Layout = () => {
           <Outlet />
         </div>
       </article>
-      <footer className="bg-[#F5F5F5] py-[36px] ">
-        <div className="container flex flex-col justify-end items-center">
+      <footer className="bg-[#F5F5F5] py-[36px]">
+        <div className="container mx-auto flex flex-col justify-end items-center">
           <nav className="flex gap-[25px] text-[#544B44] text-sm mb-[26px]">
             <li>
               <a href="#">About</a>

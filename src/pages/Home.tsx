@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import PostList from "../components/PostList";
 import Search from "../components/Search";
+import usePostStore from "../store/postStore";
 const Home = () => {
+  const fetchPosts = usePostStore((state) => state.fetchPosts);
+  useEffect(() => {
+    fetchPosts("/posts");
+  }, []);
   return (
     <>
       {/* 메인 영역 */}

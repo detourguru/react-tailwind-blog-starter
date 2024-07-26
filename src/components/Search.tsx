@@ -1,11 +1,28 @@
+import { useEffect, useState } from "react";
 import { search } from "../assets/blog/assets";
+import usePostStore from "../store/postStore";
 
 const Search = () => {
+  const [keyword, setKeyword] = useState("");
+  const fetchPosts = usePostStore((state) => state.fetchPosts);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("거색중");
+
+      fetchPosts(`/posts?title_like=${keyword}`);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [keyword]);
   return (
     <>
       <section className="flex justify-center items-center mt-[32px]">
         <div className="w-full max-w-[430px] relative">
           <input
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             type="text"
             className="border border-[#DDDDDD] w-full h-[58px] py-[18px] px-[28px] rounded-[5px] placeholder-[#5f5f5f] text-lg"
             placeholder="Search for Articles"
